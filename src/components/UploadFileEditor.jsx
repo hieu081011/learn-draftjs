@@ -1,27 +1,13 @@
 import React, { useState, useRef } from "react";
-import {
-    AtomicBlockUtils,
-    Editor,
-    EditorState,
-    RichUtils,
-    convertToRaw,
-} from "draft-js";
+import { AtomicBlockUtils, Editor, EditorState, RichUtils } from "draft-js";
 
 const MediaUploadEditor = ({ consoleLog, clearConsole }) => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
-    const [file, setFile] = useState(null);
     const editorRef = useRef(null);
     const fileInputRef = useRef(null);
 
     const focus = () => editorRef.current.focus();
-    const logContentState = () => {
-        const contentState = editorState.getCurrentContent();
-        consoleLog(JSON.stringify(contentState.toJS(), null, 4));
-    };
-    const logRawContentState = () => {
-        const contentState = editorState.getCurrentContent();
-        consoleLog(JSON.stringify(convertToRaw(contentState), null, 4));
-    };
+
     const onChange = (newEditorState) => setEditorState(newEditorState);
 
     const onFileChange = (e) => {

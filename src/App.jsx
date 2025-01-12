@@ -7,22 +7,16 @@ import OrderedListEditor from "./components/OrderList";
 import ImageEditor from "./components/ImageEditor";
 import HashtagEditor from "./components/HashEditor";
 import ColorEditor from "./components/ColorEditor";
-import MediaEditorExample from "./components/MediaEditor";
 import MediaUploadEditor from "./components/UploadFileEditor";
+import DraftLinkWithPreview from "./components/LinkEditor";
 function App() {
     const [editorState, setEditorState] = React.useState(() =>
         EditorState.createEmpty()
     );
 
     return (
-        <div
-            style={{
-                border: "2px solid black",
-                borderRadius: "12px",
-                padding: "10px 20px 10px 20px",
-            }}
-        >
-            <MediaUploadEditor />
+        <div>
+            <DraftLinkWithPreview />
         </div>
     );
 }

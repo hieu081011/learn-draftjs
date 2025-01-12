@@ -34,18 +34,12 @@ const decorator = new CompositeDecorator([
 
 const HashtagEditor = () => {
     const [editorState, setEditorState] = useState(() =>
-        EditorState.createEmpty()
+        EditorState.createEmpty(decorator)
     );
 
-    // Function to handle editor state change
     const handleChange = (state) => {
         setEditorState(state);
     };
-
-    // Apply the decorator to the editor
-    const editorStateWithDecorator = EditorState.set(editorState, {
-        decorator: decorator,
-    });
 
     return (
         <div
@@ -62,10 +56,7 @@ const HashtagEditor = () => {
                     padding: "10px",
                 }}
             >
-                <Editor
-                    editorState={editorStateWithDecorator}
-                    onChange={handleChange}
-                />
+                <Editor editorState={editorState} onChange={handleChange} />
             </div>
         </div>
     );
